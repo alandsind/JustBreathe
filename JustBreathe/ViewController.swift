@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var bgColors: [UIColor] = [#colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)]
+    var bgColors: [UIColor] = [#colorLiteral(red: 0.03179307655, green: 0.08770311624, blue: 0.1200960204, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1), #colorLiteral(red: 0.6886341572, green: 1, blue: 1, alpha: 1)]
     var index: Int = 0
     var viewForGradient = UIView()
     
@@ -23,10 +23,10 @@ class ViewController: UIViewController {
         setupTimer()
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [#colorLiteral(red: 0.9999235272, green: 1, blue: 0.9998829961, alpha: 0).cgColor, UIColor(white: 1, alpha: 0.8).cgColor, UIColor(white: 1, alpha: 0.8).cgColor, UIColor(white: 1, alpha: 0).cgColor]
-        gradientLayer.locations = [-0.4, 0.48, 0.52, 1.5]
+        gradientLayer.colors = [UIColor(white: 1, alpha: 0).cgColor, UIColor(white: 1, alpha: 0.7).cgColor, UIColor(white: 1, alpha: 0.72).cgColor, UIColor(white: 1, alpha: 0.7).cgColor, UIColor(white: 1, alpha: 0).cgColor]
+        gradientLayer.locations = [0, 0.48, 0.5, 0.52, 1]
         
-        viewForGradient = UIView(frame: CGRect(x: 0, y: 0, width: 414, height: 1792))
+        viewForGradient = UIView(frame: CGRect(x: 0, y: -448, width: 414, height: 1792))
         gradientLayer.frame = viewForGradient.frame
         
         self.viewForGradient.layer.addSublayer(gradientLayer)
@@ -54,10 +54,10 @@ class ViewController: UIViewController {
         })
         
         UIView.animate(withDuration: 2, animations: {
-            self.viewForGradient.frame = CGRect(x: 0, y: self.view.frame.height, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
+            self.viewForGradient.frame = CGRect(x: 0, y: 448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
         }) { (completed) in
             UIView.animate(withDuration: 2, animations: {
-                self.viewForGradient.frame = CGRect(x: 0, y: -self.view.frame.height, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
+                self.viewForGradient.frame = CGRect(x: 0, y: -448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
             })
         }
     }
