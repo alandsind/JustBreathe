@@ -56,29 +56,21 @@ class ViewController: UIViewController {
             
         })
         
-        UIView.animate(withDuration: 4, animations: {
+        UIView.animate(withDuration: 4, delay: 0, options: .curveEaseOut, animations: {
             self.breathIndicator.text = "Exhale"
+            self.breathIndicator.alpha = 0
+            self.breathIndicator.alpha = 1
+            self.breathIndicator.transform = CGAffineTransform.identity
             self.viewForGradient.frame = CGRect(x: 0, y: 448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
         }) { (completed) in
-            UIView.animate(withDuration: 4, animations: {
+            UIView.animate(withDuration: 4, delay: 0, options: .curveEaseOut, animations: {
                 self.breathIndicator.text = "Inhale"
+                self.breathIndicator.alpha = 1
+                self.breathIndicator.alpha = 0
+                self.breathIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
                 self.viewForGradient.frame = CGRect(x: 0, y: -448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
             })
         }
     }
-        
-    
-        
-        //gradient animation
-        /*let animation = CABasicAnimation(
-            keyPath: "transform.translation.y")
-        animation.duration = 2
-        animation.fromValue = -view.frame.height
-        animation.toValue = view.frame.height
-        animation.repeatCount = Float.infinity
-        
-        //gradientLayer.add(animation, forKey: "upDown")*/
-    
-        
 }
 
