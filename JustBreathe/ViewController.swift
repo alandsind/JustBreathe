@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
-
-    var bgColors: [UIColor] = [#colorLiteral(red: 0.03179307655, green: 0.08770311624, blue: 0.1200960204, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1), #colorLiteral(red: 0.6886341572, green: 1, blue: 1, alpha: 1)]
+    
+    //gradient & pulsating background
+    @IBOutlet weak var breathIndicator: UILabel!
+    var bgColors: [UIColor] = [#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)]
     var index: Int = 0
     var viewForGradient = UIView()
-    
+    var songPlayer = AVAudioFile()
     var timer = Timer()
     
     override func viewDidLoad() {
@@ -34,7 +37,7 @@ class ViewController: UIViewController {
     
     }
     func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(handleColorChange), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(handleColorChange), userInfo: nil, repeats: true)
     }
     
     @objc func handleColorChange() {
@@ -48,15 +51,17 @@ class ViewController: UIViewController {
         }
 
         debugPrint(index)
-        UIView.animate(withDuration: 2, animations:  {
+        UIView.animate(withDuration: 4, animations:  {
             self.view.backgroundColor = self.bgColors[self.index]
             
         })
         
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 4, animations: {
+            self.breathIndicator.text = "Exhale"
             self.viewForGradient.frame = CGRect(x: 0, y: 448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
         }) { (completed) in
-            UIView.animate(withDuration: 2, animations: {
+            UIView.animate(withDuration: 4, animations: {
+                self.breathIndicator.text = "Inhale"
                 self.viewForGradient.frame = CGRect(x: 0, y: -448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
             })
         }
