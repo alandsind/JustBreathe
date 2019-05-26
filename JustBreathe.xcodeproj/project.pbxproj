@@ -14,9 +14,9 @@
 		9A2C864B2292608F009B6C98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C86492292608F009B6C98 /* LaunchScreen.storyboard */; };
 		9A2C86562292608F009B6C98 /* JustBreatheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2C86552292608F009B6C98 /* JustBreatheTests.swift */; };
 		9A2C86612292608F009B6C98 /* JustBreatheUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2C86602292608F009B6C98 /* JustBreatheUITests.swift */; };
+		9A3D0522229A788500ADFF41 /* Just-Breathe.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A3D0521229A788500ADFF41 /* Just-Breathe.png */; };
 		9AAA096D229956AE005D5F6E /* ButtonScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAA096C229956AE005D5F6E /* ButtonScreenViewController.swift */; };
 		9ACA61EF229A649100DF3A78 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9ACA61EE229A649100DF3A78 /* bgm.mp3 */; };
-		9ACA620A229A6D5700DF3A78 /* Just-Breathe-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ACA6209229A6D5700DF3A78 /* Just-Breathe-Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +50,9 @@
 		9A2C865C2292608F009B6C98 /* JustBreatheUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustBreatheUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2C86602292608F009B6C98 /* JustBreatheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustBreatheUITests.swift; sourceTree = "<group>"; };
 		9A2C86622292608F009B6C98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A3D0521229A788500ADFF41 /* Just-Breathe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Just-Breathe.png"; sourceTree = "<group>"; };
 		9AAA096C229956AE005D5F6E /* ButtonScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonScreenViewController.swift; sourceTree = "<group>"; };
 		9ACA61EE229A649100DF3A78 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm.mp3; sourceTree = "<group>"; };
-		9ACA6209229A6D5700DF3A78 /* Just-Breathe-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Just-Breathe-Icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 				9A2C86472292608F009B6C98 /* Assets.xcassets */,
 				9A2C86492292608F009B6C98 /* LaunchScreen.storyboard */,
 				9A2C864C2292608F009B6C98 /* Info.plist */,
-				9ACA6209229A6D5700DF3A78 /* Just-Breathe-Icon.png */,
+				9A3D0521229A788500ADFF41 /* Just-Breathe.png */,
 			);
 			path = JustBreathe;
 			sourceTree = "<group>";
@@ -252,9 +252,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A2C864B2292608F009B6C98 /* LaunchScreen.storyboard in Resources */,
+				9A3D0522229A788500ADFF41 /* Just-Breathe.png in Resources */,
 				9A2C86482292608F009B6C98 /* Assets.xcassets in Resources */,
 				9A2C86462292608E009B6C98 /* Main.storyboard in Resources */,
-				9ACA620A229A6D5700DF3A78 /* Just-Breathe-Icon.png in Resources */,
 				9ACA61EF229A649100DF3A78 /* bgm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
