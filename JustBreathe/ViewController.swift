@@ -11,17 +11,31 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
+    
     //gradient & pulsating background
     @IBOutlet weak var breathIndicator: UILabel!
     var bgColors: [UIColor] = [#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)]
     var index: Int = 0
     var viewForGradient = UIView()
     var timer = Timer()
-
+    var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //play background music
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "bgm", ofType: "mp3")!))
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+            audioPlayer.numberOfLoops = -1
+        }
+        catch{
+            print(error)
+        }
+        
+        //set index and timer for pulasting background
         index = 0
         setupTimer()
         
@@ -35,8 +49,8 @@ class ViewController: UIViewController {
         
         self.viewForGradient.layer.addSublayer(gradientLayer)
         self.view.addSubview(viewForGradient)
-    
     }
+    
     //pulsating background animation
     func setupTimer() {
         timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(handleColorChange), userInfo: nil, repeats: true)
