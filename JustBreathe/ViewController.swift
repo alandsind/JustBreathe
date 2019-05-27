@@ -15,12 +15,16 @@ class ViewController: UIViewController {
     //gradient & pulsating background
     @IBOutlet weak var breathIndicator: UILabel!
     var bgColors: [UIColor] = [#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)]
-    var index: Int = 0
     var viewForGradient = UIView()
+    var index: Int = 0
+    
+    //timer
     var timer = Timer()
     var heartbeatTimer = Timer()
-    var audioPlayer = AVAudioPlayer()
     var timeForHeartbeat: CFTimeInterval = 2.0
+    
+    //audio
+    var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +41,11 @@ class ViewController: UIViewController {
             print(error)
         }
         
-        //set index, timer for pulasting background and heartbeat feedback
+        //set index, timer for pulasting background
         index = 0
         setupTimer()
+        
+        //timer for taptic heartbeat
         heartbeatTimer = Timer.scheduledTimer(timeInterval: timeForHeartbeat, target: self, selector: #selector(heartbeat), userInfo: nil, repeats: true)
         
         //swiping gradient background color animation
@@ -54,13 +60,15 @@ class ViewController: UIViewController {
         self.view.addSubview(viewForGradient)
     }
     
-    //haptic effect
+    //taptic heartbeat
     @objc func heartbeat() {
         let impact = UIImpactFeedbackGenerator(style: .heavy)
         impact.prepare()
         impact.impactOccurred()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-            impact.impactOccurred()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35){
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.prepare()
+            generator.impactOccurred()
         }
     }
     
