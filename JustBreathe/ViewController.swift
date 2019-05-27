@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     var index: Int = 0
     var viewForGradient = UIView()
     var timer = Timer()
+    var heartbeatTimer = Timer()
     var audioPlayer = AVAudioPlayer()
+    var timeForHeartbeat: CFTimeInterval = 2.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +37,10 @@ class ViewController: UIViewController {
             print(error)
         }
         
-        //set index and timer for pulasting background
+        //set index, timer for pulasting background and heartbeat feedback
         index = 0
         setupTimer()
+        heartbeatTimer = Timer.scheduledTimer(timeInterval: timeForHeartbeat, target: self, selector: #selector(heartbeat), userInfo: nil, repeats: true)
         
         //swiping gradient background color animation
         let gradientLayer = CAGradientLayer()
@@ -49,6 +52,16 @@ class ViewController: UIViewController {
         
         self.viewForGradient.layer.addSublayer(gradientLayer)
         self.view.addSubview(viewForGradient)
+    }
+    
+    //haptic effect
+    @objc func heartbeat() {
+        let impact = UIImpactFeedbackGenerator(style: .heavy)
+        impact.prepare()
+        impact.impactOccurred()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+            impact.impactOccurred()
+        }
     }
     
     //pulsating background animation
@@ -79,6 +92,7 @@ class ViewController: UIViewController {
             self.breathIndicator.alpha = 1
             self.breathIndicator.transform = CGAffineTransform.identity
             self.viewForGradient.frame = CGRect(x: 0, y: 448, width: self.viewForGradient.frame.width, height: self.viewForGradient.frame.height)
+            
         }) { (completed) in
             UIView.animate(withDuration: 4, delay: 0, options: .curveEaseOut, animations: {
                 self.breathIndicator.text = "Inhale"
